@@ -1,4 +1,4 @@
-import { screenHeight, screenWidth } from "..";
+import { myMouse, screenHeight, screenWidth } from "..";
 import { segments } from "../geometry/LineSegment";
 
 export const myCanvas = document.getElementById("myCanvas") as HTMLCanvasElement;
@@ -24,6 +24,17 @@ export default class RenderSystem {
         }
     }
 
+    private static renderMousePosition() {
+        const dpr = window.devicePixelRatio;
+
+        mainContext.save();
+        mainContext.fillStyle = "red";
+        mainContext.beginPath();
+        mainContext.arc(myMouse.x * dpr, myMouse.y * dpr, 10, 0, Math.PI * 2);
+        mainContext.fill();
+        mainContext.restore();
+    }
+
     static main() {
         mainContext.clearRect(
             0,
@@ -33,6 +44,8 @@ export default class RenderSystem {
         );
 
         this.renderLineSegments();
+        this.renderMousePosition();
+
         window.requestAnimationFrame(() => this.main());
     }
 }
