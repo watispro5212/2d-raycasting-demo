@@ -19,7 +19,7 @@ window.onload = () => {
     myCanvas.style.height = `${screenHeight}px`; console.log(screenHeight);
 
     const segmentCount = Math.floor(Math.random() * 11) + 6;
-    const minLen = 50;
+    const minLen = 100;
     const maxLen = 250;
 
     for (let i = 0; i < segmentCount; i++) {
