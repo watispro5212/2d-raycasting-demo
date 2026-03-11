@@ -2,8 +2,15 @@ import LineSegment, { segments } from "./geometry/LineSegment";
 import Point from "./geometry/Point";
 import RenderSystem, { myCanvas } from "./rendering/RenderSystem";
 
-export const screenWidth = 1280 * .6;
-export const screenHeight = 720 * .6;
+export const screenWidth = 1280 * .75;
+export const screenHeight = 720 * .75;
+
+export const myMouse = new Point(0, 0);
+
+myCanvas.addEventListener("mousemove", (ev) => {
+    myMouse.x = ev.offsetX;
+    myMouse.y = ev.offsetY;
+});
 
 window.onload = () => {
     myCanvas.width = screenWidth * window.devicePixelRatio;
